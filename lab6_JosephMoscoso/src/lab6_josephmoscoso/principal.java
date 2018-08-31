@@ -8,7 +8,10 @@ package lab6_josephmoscoso;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.util.ArrayList;
 import java.util.Scanner;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 
 /**
  *
@@ -21,6 +24,8 @@ public class principal extends javax.swing.JFrame {
      */
     public principal() {
         initComponents();
+//        iniciop();
+//        iniciou();
     }
 
     /**
@@ -33,22 +38,100 @@ public class principal extends javax.swing.JFrame {
     private void initComponents() {
 
         jd_sesion = new javax.swing.JDialog();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        arbol = new javax.swing.JTree();
+        jb_logout = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
+        jButton5 = new javax.swing.JButton();
+        jButton6 = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         iniciou = new javax.swing.JTextField();
         iniciop = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
+
+        arbol.setBorder(javax.swing.BorderFactory.createEtchedBorder());
+        javax.swing.tree.DefaultMutableTreeNode treeNode1 = new javax.swing.tree.DefaultMutableTreeNode("Nesflis");
+        arbol.setModel(new javax.swing.tree.DefaultTreeModel(treeNode1));
+        jScrollPane1.setViewportView(arbol);
+
+        jb_logout.setText("Log Out");
+        jb_logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_logoutMouseClicked(evt);
+            }
+        });
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabel4.setText("Bienvenido");
+
+        jButton3.setText("Eliminar");
+
+        jButton5.setText("Agregar");
+
+        jButton6.setText("Guardar Cambios");
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setText("Seleccione del arbol para realizar ");
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel6.setText("La accion de eliminar");
 
         javax.swing.GroupLayout jd_sesionLayout = new javax.swing.GroupLayout(jd_sesion.getContentPane());
         jd_sesion.getContentPane().setLayout(jd_sesionLayout);
         jd_sesionLayout.setHorizontalGroup(
             jd_sesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(jd_sesionLayout.createSequentialGroup()
+                .addGap(25, 25, 25)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jd_sesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_sesionLayout.createSequentialGroup()
+                        .addGroup(jd_sesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jd_sesionLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addGroup(jd_sesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel6)
+                                    .addComponent(jLabel5)))
+                            .addGroup(jd_sesionLayout.createSequentialGroup()
+                                .addGap(32, 32, 32)
+                                .addGroup(jd_sesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(jButton6)
+                                    .addComponent(jLabel4))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jd_sesionLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGroup(jd_sesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton5)
+                            .addComponent(jb_logout)
+                            .addComponent(jButton3))
+                        .addGap(72, 72, 72))))
         );
         jd_sesionLayout.setVerticalGroup(
             jd_sesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(jd_sesionLayout.createSequentialGroup()
+                .addGap(19, 19, 19)
+                .addGroup(jd_sesionLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jd_sesionLayout.createSequentialGroup()
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jb_logout)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton5)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton6)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel6))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(20, Short.MAX_VALUE))
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -67,29 +150,33 @@ public class principal extends javax.swing.JFrame {
             }
         });
 
+        jButton4.setText("Salir");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(iniciou)
-                    .addComponent(iniciop, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(186, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(159, 159, 159))
+            .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(159, 159, 159))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel2))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(iniciou)
+                            .addComponent(iniciop, javax.swing.GroupLayout.DEFAULT_SIZE, 299, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(122, 122, 122)
                         .addComponent(jButton1)
-                        .addGap(194, 194, 194))))
+                        .addGap(59, 59, 59)
+                        .addComponent(jButton4)))
+                .addContainerGap(83, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -104,9 +191,11 @@ public class principal extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
                     .addComponent(iniciop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(28, 28, 28)
-                .addComponent(jButton1)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addGap(32, 32, 32)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton4))
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
         pack();
@@ -118,12 +207,16 @@ public class principal extends javax.swing.JFrame {
         File archivo = null;
         Scanner sc = null;
         try {
-            archivo = new File("./Usuarios.txt");          
+            archivo = new File("./Usuarios.txt");
             sc = new Scanner(archivo);
             sc.useDelimiter(";");
-            int c=0;
             while (sc.hasNext()) {
                 if (iniciop.getText().equals(sc.next())) {
+                    iniciop.setText("");
+                    iniciou.setText("");
+                    iniciop();
+                    iniciou();
+                    cargar();
                     jd_sesion.setModal(true);
                     jd_sesion.pack();
                     jd_sesion.setLocationRelativeTo(this);
@@ -134,6 +227,94 @@ public class principal extends javax.swing.JFrame {
         }
         sc.close();
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jb_logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_logoutMouseClicked
+        // TODO add your handling code here:
+        jd_sesion.setVisible(false);
+    }//GEN-LAST:event_jb_logoutMouseClicked
+    public void cargar() {
+        DefaultTreeModel m = (DefaultTreeModel) arbol.getModel();
+        DefaultMutableTreeNode raiz = (DefaultMutableTreeNode) m.getRoot();
+        DefaultMutableTreeNode n0, n1, n2, n3;
+        n0 = new DefaultMutableTreeNode("Peliculas");
+        n1 = new DefaultMutableTreeNode("Series");
+        for (Peliculas t : p) {
+            n2 = new DefaultMutableTreeNode(t.getCategoria());
+            n3 = new DefaultMutableTreeNode(t);
+            n2.add(n3);
+            n0.add(n2);
+        }
+        for (Series t : s) {
+            n2 = new DefaultMutableTreeNode(t.getCategoria());
+            n3 = new DefaultMutableTreeNode(t);
+            n2.add(n3);
+            n1.add(n2);
+        }
+        raiz.add(n1);
+        raiz.add(n0);
+        m.reload();
+    }
+
+    public void iniciop() {
+        File archivo = null;
+        Scanner sc = null;
+        try {
+            archivo = new File("./Peliculas.txt");
+            sc = new Scanner(archivo);
+            sc.useDelimiter(";");
+            while (sc.hasNext()) {
+                p.add(new Peliculas());
+                p.get(p.size() - 1).setNombre(sc.next());
+                p.get(p.size() - 1).setDuracion(sc.next());
+                p.get(p.size() - 1).setCategoria(sc.next());
+                p.get(p.size() - 1).getActores().add(sc.next());
+                String actores = sc.next();
+                String act[] = actores.split(",");
+                for (int i = 0; i < act.length; i++) {
+                    p.get(p.size()).getActores().add(act[i]);
+                }
+                p.get(p.size() - 1).setDirector(sc.next());
+                p.get(p.size() - 1).setCompañia(sc.next());
+                p.get(p.size() - 1).setIdioma(sc.next());
+                p.get(p.size() - 1).setDoblaje(sc.next());
+                p.get(p.size() - 1).setSubtitulos(sc.next());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        sc.close();
+    }
+
+    public void iniciou() {
+        File archivo = null;
+        Scanner sc = null;
+        try {
+            archivo = new File("./Series.txt");
+            sc = new Scanner(archivo);
+            sc.useDelimiter(";");
+            while (sc.hasNext()) {
+                // s.add(new Series(sc.next(), sc.next(), sc.next(), sc.next(), Integer.parseInt(sc.next()), sc.next(), sc.next(), sc.next(), sc.next()));
+                s.add(new Series());
+                s.get(s.size() - 1).setNombre(sc.next());
+                s.get(s.size() - 1).setDuracion(sc.next());
+                s.get(s.size() - 1).setCategoria(sc.next());
+                String actores = sc.next();
+                String act[] = actores.split(",");
+                for (int i = 0; i < act.length; i++) {
+                    s.get(s.size()).getActores().add(act[i]);
+                }
+                s.get(s.size() - 1).setDirector(sc.next());
+                s.get(s.size() - 1).setTemporadas(sc.nextInt());
+                s.get(s.size() - 1).setProductora(sc.next());
+                s.get(s.size() - 1).setIdioma(sc.next());
+                s.get(s.size() - 1).setDoblaje(sc.next());
+                s.get(s.size() - 1).setSubtitulos(sc.next());
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        sc.close();
+    }
 
     /**
      * @param args the command line arguments
@@ -171,12 +352,27 @@ public class principal extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTree arbol;
     private javax.swing.JPasswordField iniciop;
     private javax.swing.JTextField iniciou;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JButton jButton5;
+    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton jb_logout;
     private javax.swing.JDialog jd_sesion;
     // End of variables declaration//GEN-END:variables
+    ArrayList<Peliculas> p = new ArrayList();
+    ArrayList<Series> s = new ArrayList();
+    DefaultMutableTreeNode n;
+    Peliculas p2;
+    Series s2;
 }

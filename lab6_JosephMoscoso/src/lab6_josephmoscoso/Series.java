@@ -121,7 +121,7 @@ public class Series {
 
     @Override
     public String toString() {
-        return "Series{" + "Nombre=" + Nombre + ", Duracion=" + Duracion + ", Categoria=" + Categoria + ", Actores=" + Actores + ", Director=" + Director + ", Temporadas=" + Temporadas + ", Productora=" + Productora + ", Idioma=" + Idioma + ", Doblaje=" + Doblaje + ", Subtitulos=" + Subtitulos + '}';
+        return Nombre;
     }
 
 }
