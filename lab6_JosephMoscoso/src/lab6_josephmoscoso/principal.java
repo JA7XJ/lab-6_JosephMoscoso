@@ -8,6 +8,7 @@ package lab6_josephmoscoso;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javax.swing.tree.DefaultMutableTreeNode;
@@ -255,65 +256,124 @@ public class principal extends javax.swing.JFrame {
         m.reload();
     }
 
-    public void iniciop() {
-        File archivo2 = null;
-        Scanner sc2 = null;
+    public void iniciop() throws IOException {
+        File archivo = null;
+        FileReader fr = null;
+        BufferedReader br = null;
         try {
-            archivo2 = new File("./Peliculas.txt");
-            sc2 = new Scanner(archivo2);
-            sc2.useDelimiter(";");
-            while (sc2.hasNext()) {
-                p.add(new Peliculas());
-                p.get(p.size() - 1).setNombre(sc2.next());
-                p.get(p.size() - 1).setDuracion(sc2.next());
-                p.get(p.size() - 1).setCategoria(sc2.next());
-                p.get(p.size() - 1).getActores().add(sc2.next());
-                String actores = sc2.next();
-                String act[] = actores.split(",");
-                for (int i = 0; i < act.length; i++) {
-                    p.get(p.size()).getActores().add(act[i]);
+            archivo = new File("./Peliculas.txt");
+            fr = new FileReader(archivo);
+            br = new BufferedReader(fr);
+            String line = "";
+            while ((line = br.readLine()) != null) {
+                String[] tokens;
+                tokens = line.split(";");
+                int c2 = 0, c = 9, c3 = 0;
+                for (int i = 0; i < tokens.length; i++) {
+                    if (c != tokens.length) {
+                        for (int j = c2; j < c; j++) {
+                            if (c3 == 0) {
+                                p.add(new Peliculas());
+                                p.get(p.size() - 1).setNombre(tokens[j]);
+                            }
+                            if (c3 == 1) {
+                                p.get(p.size() - 1).setDuracion(tokens[j]);
+                            }
+                            if (c3 == 2) {
+                                p.get(p.size() - 1).setCategoria(tokens[j]);
+                            }
+                            if (c3 == 3) {
+                                p.get(p.size() - 1).getActores().add(tokens[j]);
+                            }
+                            if (c3 == 4) {
+                                p.get(p.size() - 1).setDirector(tokens[j]);
+                            }
+                            if (c3 == 5) {
+                                p.get(p.size() - 1).setCompañia(tokens[j]);
+                            }
+                            if (c3 == 6) {
+                                p.get(p.size() - 1).setIdioma(tokens[j]);
+                            }
+                            if (c3 == 7) {
+                                p.get(p.size() - 1).setDoblaje(tokens[j]);
+                            }
+                            if (c3 == 8) {
+                                p.get(p.size() - 1).setSubtitulos(tokens[j]);
+                            }
+                        }
+                        c2 = c;
+                    }
+                    c = c;
                 }
-                p.get(p.size() - 1).setDirector(sc2.next());
-                p.get(p.size() - 1).setCompañia(sc2.next());
-                p.get(p.size() - 1).setIdioma(sc2.next());
-                p.get(p.size() - 1).setDoblaje(sc2.next());
-                p.get(p.size() - 1).setSubtitulos(sc2.next());
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        sc2.close();
+        br.close();
+        fr.close();
     }
 
-    public void iniciou() {
-        File archivo3 = null;
-        Scanner sc3 = null;
+    public void iniciou() throws IOException {
+        File archivo = null;
+        FileReader fr = null;
+        BufferedReader br = null;
         try {
-            archivo3 = new File("./Series.txt");
-            sc3 = new Scanner(archivo3);
-            sc3.useDelimiter(";");
-            while (sc3.hasNext()) {
-                //s.add(new Series(sc.next(), sc.next(), sc.next(), sc.next(), Integer.parseInt(sc.next()), sc.next(), sc.next(), sc.next(), sc.next()));
-                s.add(new Series());
-                s.get(s.size() - 1).setNombre(sc3.next());
-                s.get(s.size() - 1).setDuracion(sc3.next());
-                s.get(s.size() - 1).setCategoria(sc3.next());
-                String actores = sc3.next();
-                String act[] = actores.split(",");
-                for (int i = 0; i < act.length; i++) {
-                    s.get(s.size()).getActores().add(act[i]);
+            archivo = new File("./Series.txt");
+            fr = new FileReader(archivo);
+            br = new BufferedReader(fr);
+            String line = "";
+            while ((line = br.readLine()) != null) {
+                String[] tokens;
+                tokens = line.split(";");
+                int c2 = 0, c = 10;
+                for (int i = 0; i < tokens.length; i++) {
+                    if (c != tokens.length) {
+                        for (int j = c2; j < c; j++) {
+                            if (j == 0) {
+                                s.add(new Series());
+                                s.get(s.size() - 1).setNombre(tokens[j]);
+                            }
+                            if (j == 1) {
+                                s.get(s.size() - 1).setDuracion(tokens[j]);
+                            }
+                            if (j == 2) {
+                                s.get(s.size() - 1).setCategoria(tokens[j]);
+                            }
+                            if (j == 3) {
+                                s.get(s.size() - 1).getActores().add(tokens[j]);
+                            }
+                            if (j == 4) {
+                                s.get(s.size() - 1).setDirector(tokens[j]);
+                            }
+                            if (j == 5) {
+                                s.get(s.size() - 1).setDuracion(tokens[j]);
+                            }
+                            if (j == 6) {
+                                s.get(s.size() - 1).setProductora(tokens[j]);
+                            }
+                            if (j == 7) {
+                                s.get(s.size() - 1).setIdioma(tokens[j]);
+                            }
+                            if (j == 8) {
+                                s.get(s.size() - 1).setDoblaje(tokens[j]);
+                            }
+                            if (j == 9) {
+                                s.get(s.size() - 1).setSubtitulos(tokens[j]);
+                            }
+
+                        }
+                        c2 = c;
+                    }
+                    c = c + 10;
                 }
-                s.get(s.size() - 1).setDirector(sc3.next());
-                s.get(s.size() - 1).setTemporadas(sc3.nextInt());
-                s.get(s.size() - 1).setProductora(sc3.next());
-                s.get(s.size() - 1).setIdioma(sc3.next());
-                s.get(s.size() - 1).setDoblaje(sc3.next());
-                s.get(s.size() - 1).setSubtitulos(sc3.next());
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
-        sc3.close();
+        br.close();
+        fr.close();
     }
 
     /**
