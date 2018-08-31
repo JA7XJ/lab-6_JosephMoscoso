@@ -256,64 +256,64 @@ public class principal extends javax.swing.JFrame {
     }
 
     public void iniciop() {
-        File archivo = null;
-        Scanner sc = null;
+        File archivo2 = null;
+        Scanner sc2 = null;
         try {
-            archivo = new File("./Peliculas.txt");
-            sc = new Scanner(archivo);
-            sc.useDelimiter(";");
-            while (sc.hasNext()) {
+            archivo2 = new File("./Peliculas.txt");
+            sc2 = new Scanner(archivo2);
+            sc2.useDelimiter(";");
+            while (sc2.hasNext()) {
                 p.add(new Peliculas());
-                p.get(p.size() - 1).setNombre(sc.next());
-                p.get(p.size() - 1).setDuracion(sc.next());
-                p.get(p.size() - 1).setCategoria(sc.next());
-                p.get(p.size() - 1).getActores().add(sc.next());
-                String actores = sc.next();
+                p.get(p.size() - 1).setNombre(sc2.next());
+                p.get(p.size() - 1).setDuracion(sc2.next());
+                p.get(p.size() - 1).setCategoria(sc2.next());
+                p.get(p.size() - 1).getActores().add(sc2.next());
+                String actores = sc2.next();
                 String act[] = actores.split(",");
                 for (int i = 0; i < act.length; i++) {
                     p.get(p.size()).getActores().add(act[i]);
                 }
-                p.get(p.size() - 1).setDirector(sc.next());
-                p.get(p.size() - 1).setCompañia(sc.next());
-                p.get(p.size() - 1).setIdioma(sc.next());
-                p.get(p.size() - 1).setDoblaje(sc.next());
-                p.get(p.size() - 1).setSubtitulos(sc.next());
+                p.get(p.size() - 1).setDirector(sc2.next());
+                p.get(p.size() - 1).setCompañia(sc2.next());
+                p.get(p.size() - 1).setIdioma(sc2.next());
+                p.get(p.size() - 1).setDoblaje(sc2.next());
+                p.get(p.size() - 1).setSubtitulos(sc2.next());
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        sc.close();
+        sc2.close();
     }
 
     public void iniciou() {
-        File archivo = null;
-        Scanner sc = null;
+        File archivo3 = null;
+        Scanner sc3 = null;
         try {
-            archivo = new File("./Series.txt");
-            sc = new Scanner(archivo);
-            sc.useDelimiter(";");
-            while (sc.hasNext()) {
-                // s.add(new Series(sc.next(), sc.next(), sc.next(), sc.next(), Integer.parseInt(sc.next()), sc.next(), sc.next(), sc.next(), sc.next()));
+            archivo3 = new File("./Series.txt");
+            sc3 = new Scanner(archivo3);
+            sc3.useDelimiter(";");
+            while (sc3.hasNext()) {
+                //s.add(new Series(sc.next(), sc.next(), sc.next(), sc.next(), Integer.parseInt(sc.next()), sc.next(), sc.next(), sc.next(), sc.next()));
                 s.add(new Series());
-                s.get(s.size() - 1).setNombre(sc.next());
-                s.get(s.size() - 1).setDuracion(sc.next());
-                s.get(s.size() - 1).setCategoria(sc.next());
-                String actores = sc.next();
+                s.get(s.size() - 1).setNombre(sc3.next());
+                s.get(s.size() - 1).setDuracion(sc3.next());
+                s.get(s.size() - 1).setCategoria(sc3.next());
+                String actores = sc3.next();
                 String act[] = actores.split(",");
                 for (int i = 0; i < act.length; i++) {
                     s.get(s.size()).getActores().add(act[i]);
                 }
-                s.get(s.size() - 1).setDirector(sc.next());
-                s.get(s.size() - 1).setTemporadas(sc.nextInt());
-                s.get(s.size() - 1).setProductora(sc.next());
-                s.get(s.size() - 1).setIdioma(sc.next());
-                s.get(s.size() - 1).setDoblaje(sc.next());
-                s.get(s.size() - 1).setSubtitulos(sc.next());
+                s.get(s.size() - 1).setDirector(sc3.next());
+                s.get(s.size() - 1).setTemporadas(sc3.nextInt());
+                s.get(s.size() - 1).setProductora(sc3.next());
+                s.get(s.size() - 1).setIdioma(sc3.next());
+                s.get(s.size() - 1).setDoblaje(sc3.next());
+                s.get(s.size() - 1).setSubtitulos(sc3.next());
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        sc.close();
+        sc3.close();
     }
 
     /**
